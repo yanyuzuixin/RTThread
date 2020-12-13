@@ -33,7 +33,7 @@ typedef rt_base_t           rt_off_t;             /* 这个用来干什么的 */
 #define rt_inline           static inline
 #define ALIGN(n)            PRAGMA(data_alignment=n)
 
-#elif define (__GNUC__)
+#elif defined (__GNUC__)
 #define rt_inline           static __inline
 #define ALIGN(n)            __attribute__((aligned(n)))
 
@@ -45,6 +45,19 @@ typedef rt_base_t           rt_off_t;             /* 这个用来干什么的 */
 #define RT_ALIGN_DOWN(size, align)  ((size) & (~((align) - 1)))
 
 #define RT_NULL             0
+
+#define RT_EOK              0  /* There is no error */
+#define RT_ERROR            1  /* A generic error happens */
+#define RT_ETIMEOUT         2  /* Timed out */
+#define RT_EFULL            3  /* The resource is full */
+#define RT_EEMPTY           4  /* The resource is empty */
+#define RT_ENOMEM           5  /* No memory */
+#define RT_ENOSYS           6  /* No system */
+#define RT_EBUSY            7  /* Busy */
+#define RT_EIO              8  /* IO error */
+#define RT_EINTR            9  /* Interrupted system call */
+#define RT_EINVAL           10 /* Invalid argument */
+
 
 struct rt_list_node {
     struct rt_list_node *next;

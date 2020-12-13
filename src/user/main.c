@@ -1,7 +1,9 @@
 
 #include "rtdef.h"
-#include "rtconfig.h"
 #include "rtservice.h"
+#include "rtthread.h"
+
+#include "rtconfig.h"
 
 ALIGN(RT_ALIGN_SIZE)
 
@@ -46,7 +48,19 @@ void flag2_thread_entry(void* p_arg)
 
 int main(void)
 {
-    for(;;) {
-    }
+    /* 硬件初始化 */
+    /* 将硬件相关的初始化放在这里，如果是软件仿真则没有相关的初始化代码 */
+
+    /* 初始化线程 */
+    rt_thread_init(&rt_flag1_thread,
+        flag1_thread_entry,
+        RT_NULL,
+        &rt_flag1_thread_stack[0],
+        sizeof(rt_flag1_thread_stack));
+    rt_thread_init(&rt_flag2_thread,
+        flag2_thread_entry,
+        RT_NULL,
+        &rt_flag2_thread_stack[0],
+        sizeof(rt_flag2_thread_stack));
 }
 

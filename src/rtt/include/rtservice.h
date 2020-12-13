@@ -1,3 +1,6 @@
+#ifndef RTSERVICE_H
+#define RTSERVICE_H
+
 #include "rtdef.h"
 
 /* 初始化链表节点 */
@@ -32,3 +35,5 @@ rt_inline void rt_list_remove(rt_list_t* node)
     
     node->next = node->prev = node;  /* 重新初始化该节点？ */
 }
+
+#endif
